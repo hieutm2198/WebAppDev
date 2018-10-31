@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="web.css" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Stardos Stencil' rel='stylesheet'>
+</head>
+<body>
+    <div id="layout">
+        <div id="header">
+            <img id="logo_school" src="image/VNU-UET.jpg" style="float: left" width="80px" height="76px" alt="Đại học công nghệ_image">
+            <h3 id="info_school">TRƯỜNG ĐẠI HỌC CÔNG NGHỆ</h3>
+            <h2 id="info_website">WebSite Quản Lý Cựu Sinh Viên</h2>
+        </div>
+        <div id="content">
+            <div id="sign_in"> 
+                <img src="image/fiora.jpg" width="100px" height="100px" id="fiora_image" alt="fiora_image">
+                <h3>Sign in to WEBSITE</h3>
+            </div>
+            <form action="#">
+                <div id="info_signin">
+                    <label for="user_name"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required><br>
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required><br>
+                    <button type="submit">Login</button><br>
+                    <p><span>New to WEBSITE? </span><a href="#" onclick="document.getElementById('subscribe').style.display='block'">Create an account.</a></p>        
+                </div>
+            </form>
+        </div>
+        <div id="footer">
+            <img src="image/anonymous.jpg" width="80px" height="80px" id="anonymous_image" alt="anonymous_image">
+            <h3>Đăng nhập với chế độ ẩn danh</h3>
+        </div>
+    </div>
+    <div id="subscribe">
+        <form action="#" id="form_signup">
+            <div id="describe_signup">
+                <h1>Sign Up</h1>
+                <p>Please fill in this form to create an account.</p>
+                <span onclick="document.getElementById('subscribe').style.display='none';" id="close_signup">&times;</span>
+            </div>
+            <div id="info_signup">
+                <input type="text" class="hoten" name="hoten" placeholder="Họ">
+                <input type="text" class="hoten" name="hoten" placeholder="Tên">
+                <input type="text" class="uname" name="uname" placeholder="Tên tài khoản">
+                <input type="password" class="psw" name="psw" placeholder="Mật khẩu">
+                <input type="password" class="cf_psw" name="cf_psw" placeholder="Nhập lại mật khẩu"><br>
+                <label for="birthday">Ngày sinh</label>
+                <input type="date" class="bday" name="bday">
+                <input type="radio" class="gender" name="gender"><span>Nữ</span>
+                <input type="radio" class="gender" name="gender"><span>Nam</span><br>
+                <button type="button" onclick="document.getElementById('subscribe').style.display='none'">Cancel</button>
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
