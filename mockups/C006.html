@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>C006</title>
+	<meta charset="utf-8">
+	 <!-- Bootstrap's dependcies -->
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/popper-1.14.3.js"></script>
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="js/bootstrap.js"></script>
+	<!-- Roboto Font -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"> 
+	<!-- Awesome Icon -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/C006.css">
+</head>
+<body>
+	<nav id="navibar" class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-dark">
+        <a class="navbar-brand" href="#">
+            <img src="img/logo_c9.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                UET graduate forum
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a href="#" class="nav-link active ml-4">
+						<i class="fas fa-home mr-2"></i>
+							Trang chủ
+					</a>
+				</li>
+				<li class="nav-item">
+					<a
+						href="#"
+						class="nav-link ml-4"
+						data-toggle="popover"
+						data-trigger="focus"
+						data-placement="bottom"
+						data-container="#navibar"
+						data-html="true"
+						title=""
+						data-content="
+							<div class='media pt-2 pb-1 border-bottom border-gray'>
+								<div class='media-body pb-1 mb-0 small lh-125'>
+									<div class='d-flex justify-content-between align-items-center w-100'>
+										<strong class='text-gray-dark'>
+											<i class='fas fa-landmark mr-2'></i>Lớp QH2016-I/CQ-C-D
+										</strong>
+									<span class='d-block small'>3 ngày trước</span>
+									</div>
+									<span class='d-block'>Hoàng Việt Hưng đã mở một thăm dò</span>
+								</div>
+							</div>
+
+							<div class='media pt-2 pb-1 border-bottom border-gray'>
+								<div class='media-body pb-1 mb-0 small lh-125'>
+                                        <div class='d-flex justify-content-between align-items-center w-100'>
+                                            <strong class='text-gray-dark'>
+                                                <i class='fas fa-users mr-2'></i>Sinh viên khóa K61
+                                            </strong>
+                                            <span class='d-block small'>1 tháng trước</span>
+                                        </div>
+                                        <span class='d-block'>Phòng Đào Tạo đã mở một khảo sát</span>
+                                    </div>
+                                </div>
+
+                                <div class='media pt-2 pb-1 text-muted border-bottom border-gray'>
+                                    <div class='media-body pb-1 mb-0 small lh-125'>
+                                        <div class='d-flex justify-content-between align-items-center w-100'>
+                                            <strong class='text-gray-dark'>
+                                                <i class='fas fa-code mr-2'></i>Sinh viên khoa CNTT
+                                            </strong>
+                                            <span class='d-block small'>10 giờ trước</span>
+                                        </div>
+                                        <span class='d-block'>Trần Văn Định đã trả lời bình luận của bạn</span>
+                                    </div>
+                                </div>
+                                
+                                <span class='d-block small pt-2 pb-1 '>
+                                    <i class='fas fa-caret-down mr-2 align-self-center'></i>
+                                    Xem thêm
+                                </span>
+                            "
+                        >
+                            <i class="fas fa-bell mr-2"></i>
+                            Thông báo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+					<a
+						href="#"
+						class="nav-link ml-4"
+						data-toggle="popover"
+						data-trigger="focus"
+						data-placement="bottom"
+						data-container="#navibar"
+						data-html="true"
+ 						title=""
+						data-content="
+							<div class='media pt-2 pb-1 border-bottom border-gray'>
+								<img src='img/ava_blue.svg' alt='32x32' class='mr-2 rounded' style='width: 32px; height: 32px;' data-holder-rendered='true'>
+								<div class='media-body pb-1 mb-0 small lh-125'>
+									<div class='d-flex justify-content-between align-items-center w-100'>
+                                        <strong class='text-gray-dark'>Hoàng Việt Hưng</strong>
+                                        <span class='d-block small'>1 giờ trước</span>
+									</div>
+									<span class='d-block'>Đi họp lớp không Hiếu?</span>
+								</div>
+							</div>
+
+ 							<div class='media text-muted pt-2 pb-1 border-bottom border-gray'>
+                                    <img src='img/ava_purple.svg' alt='32x32' class='mr-2 rounded' style='width: 32px; height: 32px;' data-holder-rendered='true'>
+                                    <div class='media-body pb-1 mb-0 small lh-125'>
+                                        <div class='d-flex justify-content-between align-items-center w-100'>
+                                        <strong class='text-gray-dark'>Tuấn Hưng</strong>
+                                        <span class='d-block small'>2 tuần trước</span>
+                                        </div>
+                                        <span class='d-block'>Đi hát đê em ei</span>
+                                    </div>
+							</div>
+							
+							<div class='media text-muted pt-2 pb-1 border-bottom border-gray'>
+                                    <img src='img/ava_purple.svg' alt='32x32' class='mr-2 rounded' style='width: 32px; height: 32px;' data-holder-rendered='true'>
+                                    <div class='media-body pb-1 mb-0 small lh-125'>
+                                        <div class='d-flex justify-content-between align-items-center w-100'>
+                                        <strong class='text-gray-dark'>Mỹ Tâm</strong>
+                                        <span class='d-block small'>1 tháng trước</span>
+                                        </div>
+                                        <span class='d-block'>Xin chào Trần Minh Hiếu!</span>
+                                    </div>
+							</div>
+							<span class='d-block small pt-2 pb-1 '>
+								<i class='fas fa-caret-down mr-2 align-self-center'></i>
+								Xem thêm
+							</span>
+						">
+					<i class="fas fa-comment-alt mr-2"></i>
+                            Tin nhắn
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link ml-4">
+						<i class="fas fa-user mr-2"></i>
+						Trần Minh Hiếu
+ 					</a>
+				</li>
+			</ul>
+		</div>
+    </nav>
+    <div class="container-fluid">
+    	<div class="row">
+	    	<div id="left-content" class="col-md-3 border-right">
+	    		<p class="h5 mt-4">Sinh viên khoá K61</p>
+	    		<div class="list-group list-group-flush mx-4">
+	    			<div class="btn btn-success h6">Tạo ngay post</div>
+	    			<a id="baidang" href="#" class="list-group-item h6" >Bài đăng</a>
+	    			<div class="list-group-item list-group-flush h6">
+	    				<a href="#" id="chude" class="h6">Chủ đề</a>
+	    				<div id="listcd" class=>
+		    				<a href="#" class="list-group-item">Tâm sự chuyện trò</a>
+		    				<a href="#" class="list-group-item">Quan điểm tranh luận</a>
+		    				<a href="#" class="list-group-item">Kĩ năng mềm</a>
+	    				</div>
+	    			</div>
+	    			<a href="#" id="thanhvien" class="list-group-item h6">Thành viên</a>
+	    		</div>
+	    	</div>
+	    	<div id="middle-content" class="col-md-6 ml-3">
+	    		<div id="thamgia">
+	    			<p class="h5 mt-4">Bạn cần tham gia để xem những nội dung của nhóm</p>
+	    			<div class="btn btn-outline-success">Tham gia ngay</div>
+	    		</div>
+	    		<div id="dathamgia">
+	    			<div class="card mt-4">
+                        <h5 class="card-header">
+                                <i class="fas fa-users mr-2"></i>
+                                Sinh viên khóa K61
+                        </h5>
+                        <div class="card-body">
+                            <h5 class="card-title">Kĩ năng mềm</h5>
+                            <p class="card-text">Tán gái đại cương - P7</p>
+                            <p class="card-text"><small class="text-muted">2/1/2030 (2 tuần trước)</small></p>
+                            <a href="#" class="btn btn-outline-success">Đọc thêm</a>
+                        </div>
+                    </div>
+	    			<div class="card mt-4">
+                        <h5 class="card-header">
+                                <i class="fas fa-users mr-2"></i>
+                                Sinh viên khóa K61
+                        </h5>
+                        <div class="card-body">
+                            <h5 class="card-title">Phòng Đào Tạo đã mở một khảo sát</h5>
+                            <p class="card-text">Khảo sát về tỷ lệ sinh viên làm việc liên quan đến công tác giáo dục.</p>
+                            <p class="card-text"><small class="text-muted">20/12/2029 (1 tháng trước)</small></p>
+                            <a href="#" class="btn btn-outline-success">Chi tiết</a>
+                        </div>
+                    </div>
+                    <div class="card mt-4">
+                        <h5 class="card-header">
+                                <i class="fas fa-users mr-2"></i>
+                                Sinh viên khóa K61
+                        </h5>
+                        <div class="card-body">
+                            <h5 class="card-title">Tâm sự chuyện trò</h5>
+                            <p class="card-text">Khi giấc hoá tro tàn</p>
+                            <p class="card-text"><small class="text-muted">19/12/2029 (1 tháng trước)</small></p>
+                            <a href="#" class="btn btn-outline-success">Đọc thêm</a>
+                        </div>
+                    </div>
+                    <div class="card mt-4">
+                        <h5 class="card-header">
+                                <i class="fas fa-users mr-2"></i>
+                                Sinh viên khóa K61
+                        </h5>
+                        <div class="card-body">
+                            <h5 class="card-title">Quan điểm tranh luận</h5>
+                            <p class="card-text">Sự phát triển của robot</p>
+                            <p class="card-text"><small class="text-muted">18/12/2029 (1 tháng trước)</small></p>
+                            <a href="#" class="btn btn-outline-success">Đọc thêm</a>
+                        </div>
+                    </div>
+	    		</div>
+	    		<div id="listthanhvien" class="mt-3">
+	    			<ul class="list-unstyled">
+	    				<li class="media">
+	    					<img src="img/ava_pink.svg" alt="" class="mr-2 rounded" width="40px;">
+	    					<div class="media-body">
+	    						<h5>Tran Van Dinh</h5>
+	    						Sinh vien K61-CD
+	    					</div>
+	    				</li>
+	    				<li class="media">
+	    					<img src="img/ava_purple.svg" alt="" class="mr-2 rounded" width="40px;">
+	    					<div class="media-body">
+	    						<h5>Tran Minh Hieu</h5>
+	    						Sinh vien K61-CD
+	    					</div>
+	    				</li>
+	    				<li class="media">
+	    					<img src="img/ava_blue.svg" alt="" class="mr-2 rounded" width="40px;">
+	    					<div class="media-body">
+	    						<h5>Hoang Viet Hung</h5>
+	    						Sinh vien K61-CD
+	    					</div>
+	    				</li>
+	    				<li></li>
+	    			</ul>
+	    		</div>
+	    	</div>
+	    	<div id="right-content" class="col-md-3"></div>
+    	</div>
+    </div>
+    <script src="js/C006.js"></script>
+</body>
+</html>

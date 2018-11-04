@@ -1,0 +1,31 @@
+#navibar .popover {
+    width: 400px;
+    max-width: none;
+}
+#navibar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+#left-content {
+    position: fixed;
+    top: 58px;
+    left: 0;
+}
+#right-content {
+    position: fixed;
+    top: 58px;
+    right: 0;
+}
+#middle-content {
+    position: relative;
+    left: 325px;
+}
+
+a {
+	color: black;
+}
+
+li {
+    margin-top:5px;
+}
