@@ -66,7 +66,7 @@ body {
     bottom: 3px;
     border: none !important;
     border-radius: 30px !important;
-    height: 80%;
+    /* height: 80%; */
     background: transparent !important;
     color: rgb(53, 166, 231) !important;
 }
@@ -77,7 +77,7 @@ body {
     bottom: 3px;
     border: none !important;
     border-radius: 30px !important;
-    height: 80%;
+    /* height: 80%; */
     background: transparent !important;
     color: #ea2858 !important;
 }
@@ -87,7 +87,7 @@ body {
     right: 74%;
     top: 8px;
     padding-right: 20px !important;
-    height: 45% !important;
+    /* height: 45% !important; */
     font-size: 14px !important;
     color: #ea2858 !important;
     border-color: #ea2858 !important;
@@ -200,7 +200,7 @@ body {
     bottom: 3px;
     border: none !important;
     border-radius: 30px !important;
-    height: 80%;
+    /* height: 80%; */
     background: transparent !important;
     color: rgb(53, 166, 231) !important;
 }

@@ -36,7 +36,7 @@
         <div id="login_content">
             <form method="post" onsubmit="return(displayError());">
                 <div id="login">SIGN IN</div>
-                <div class="input-group" style="position: relative">
+                <div class="input-group">
                     <input type="text" name="urn_login" placeholder="Username" 
                     onfocus="document.getElementById('error_sign_in').style.display = 'none'; hiddenError_User();">
                     <div class="input-group-append">
