@@ -63,10 +63,9 @@ body {
 .icon_login {
     position: relative;
     right: 100%;
-    bottom: 3px;
+    bottom: 10px;
     border: none !important;
     border-radius: 30px !important;
-    /* height: 80%; */
     background: transparent !important;
     color: rgb(53, 166, 231) !important;
 }
@@ -74,10 +73,9 @@ body {
     visibility: hidden;
     position: relative;
     right: 85%;
-    bottom: 3px;
+    bottom: 10px;
     border: none !important;
     border-radius: 30px !important;
-    /* height: 80%; */
     background: transparent !important;
     color: #ea2858 !important;
 }
@@ -85,9 +83,9 @@ body {
     visibility: hidden;
     position: relative;
     right: 74%;
-    top: 8px;
+    top: 7px;
     padding-right: 20px !important;
-    /* height: 45% !important; */
+    height: 30px !important;
     font-size: 14px !important;
     color: #ea2858 !important;
     border-color: #ea2858 !important;
@@ -197,7 +195,7 @@ body {
 .icon_sign_up {
     position: relative;
     right: 110%;
-    bottom: 3px;
+    bottom: 10px;
     border: none !important;
     border-radius: 30px !important;
     /* height: 80%; */
@@ -278,7 +276,7 @@ body {
     .icon_login, .icon_warn {
         position: absolute;
         right: 15.5% !important;
-        bottom: 16px;
+        bottom: 25px;
     }
     .error_login {
         position: absolute;
@@ -297,7 +295,7 @@ body {
     .icon_login, .icon_warn {
         position: absolute;
         right: 0 !important;
-        bottom: 16px;
+        bottom: 25px;
     }
     .error_login {
         position: absolute;

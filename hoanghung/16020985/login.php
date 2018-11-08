@@ -100,14 +100,14 @@
                 <i class="fas fa-check" id="status_user" 
                 style="font-size: 16px; color: green; position: relative; right: 0%; top: -50px; visibility: hidden;"></i><br>
                 <i class="fas fa-check" id="status_psw" 
-                style="font-size: 16px; color: green; position: relative; right: 0%; top: -50px; visibility: hidden;"></i><br>
+                style="font-size: 16px; color: green; position: relative; right: 0%; top: -40px; visibility: hidden;"></i><br>
                 <i class="fas fa-exclamation" id="fail_user" 
-                style="font-size: 16px; color: red; position: relative; right: 0%; top: -98px; visibility: hidden;"></i><br>
+                style="font-size: 16px; color: red; position: relative; right: 0%; top: -85px; visibility: hidden;"></i><br>
                 <i class="fas fa-exclamation" id="fail_psw" 
-                style="font-size: 16px; color: red; position: relative; right: 0%; top: -98px; visibility: hidden;"></i><br>
+                style="font-size: 16px; color: red; position: relative; right: 0%; top: -80px; visibility: hidden;"></i><br>
             </div>
-            <button type="button" id="cancel_sign_up" style="position: relative; top: -230px;" onclick="document.getElementById('subscribe').style.display='none';">Cancel</button>
-            <button type="submit" name="register" id="submit_sign_up" style="position: relative; top: -230px;">Sign Up</button>
+            <button type="button" id="cancel_sign_up" style="position: relative; top: -200px;" onclick="document.getElementById('subscribe').style.display='none';">Cancel</button>
+            <button type="submit" name="register" id="submit_sign_up" style="position: relative; top: -200px;">Sign Up</button>
     </div>
     <script>
     function displayError() {
