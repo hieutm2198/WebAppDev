@@ -60,15 +60,45 @@ body {
 	font-family: 'Open Sans', sans-serif;
     letter-spacing: 1px;
 }
-.input-group-text {
+.icon_login {
     position: relative;
-    right: 110%;
+    right: 100%;
     bottom: 3px;
     border: none !important;
     border-radius: 30px !important;
     height: 80%;
     background: transparent !important;
     color: rgb(53, 166, 231) !important;
+}
+.icon_warn {
+    visibility: hidden;
+    position: relative;
+    right: 85%;
+    bottom: 3px;
+    border: none !important;
+    border-radius: 30px !important;
+    height: 80%;
+    background: transparent !important;
+    color: #ea2858 !important;
+}
+.error_login {
+    visibility: hidden;
+    position: relative;
+    right: 74%;
+    top: 8px;
+    padding-right: 20px !important;
+    height: 45% !important;
+    font-size: 14px !important;
+    color: #ea2858 !important;
+    border-color: #ea2858 !important;
+    border-radius: 20px !important;
+}
+#error_sign_in {
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: red;
+    font-size: 14.5px;
+    font-weight: 400 !important;
 }
 #button_login {
     outline: none;
@@ -163,7 +193,22 @@ body {
     color: #fff;
     letter-spacing: 4px;
     font-weight: 700;
-}    
+}
+.icon_sign_up {
+    position: relative;
+    right: 110%;
+    bottom: 3px;
+    border: none !important;
+    border-radius: 30px !important;
+    height: 80%;
+    background: transparent !important;
+    color: rgb(53, 166, 231) !important;
+}
+#error_sign_up {
+    position: relative;
+    top: -120px;
+    visibility: hidden;
+}
 #cancel_sign_up {
     outline: none;
     border: none;
@@ -218,14 +263,11 @@ body {
 }
 @media screen and (max-width: 992px) {
     input {
-        width: 50% !important;
-        margin-left: 25% !important;
-    }
-    button {
-        width: 20% !important;
-    }
-}
-@media screen and (max-width: 780px) {
+        width: 30% !important;
+        margin-left: 35% !important;
+    }   
+} 
+@media screen and (max-width: 880px) {
     input {
         width: 70% !important;
         margin-left: 15% !important;
@@ -233,14 +275,33 @@ body {
     button {
         width: 30% !important;
     }
-    
+    .icon_login, .icon_warn {
+        position: absolute;
+        right: 15.5% !important;
+        bottom: 16px;
+    }
+    .error_login {
+        position: absolute;
+        right: 16% !important;
+        bottom: 16px;
+    }
 }
 @media screen and (max-width: 520px) {
-    input {
-        width: 60% !important;
-        margin-left: 15% !important;
+    #layout input {
+        width: 100% !important;
+        margin-left: 0 !important;
     }
-    button {
+    #layout button {
         width: 40% !important;
+    }
+    .icon_login, .icon_warn {
+        position: absolute;
+        right: 0 !important;
+        bottom: 16px;
+    }
+    .error_login {
+        position: absolute;
+        right: 2% !important;
+        bottom: 16px;
     }
 }
