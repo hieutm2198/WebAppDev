@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>C007</title>
+	<!-- Bootstrap's dependcies -->
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/popper-1.14.3.js"></script>
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<script src="js/bootstrap.js"></script>
+	<!-- Roboto Font -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"> 
+	<!-- Awesome Icon -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/C007.css">
+</head>
+<body>
+	<nav id="navibar" class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-dark">
+        <a class="navbar-brand" href="#">
+            <img src="img/logo_c9.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                UET graduate forum
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a href="#" class="nav-link active ml-4">
+						<i class="fas fa-home mr-2"></i>
+							Trang chủ
+					</a>
+				</li>
+				<li class="nav-item">
+					<a
+						href="#"
+						class="nav-link ml-4"
+						data-toggle="popover"
+						data-trigger="focus"
+						data-placement="bottom"
+						data-container="#navibar"
+						data-html="true"
+						title=""
+						data-content="
+							<div class='media pt-2 pb-1 border-bottom border-gray'>
+								<div class='media-body pb-1 mb-0 small lh-125'>
+									<div class='d-flex justify-content-between align-items-center w-100'>
+										<strong class='text-gray-dark'>
+											<i class='fas fa-landmark mr-2'></i>Lớp QH2016-I/CQ-C-D
+										</strong>
+									<span class='d-block small'>3 ngày trước</span>
+									</div>
+									<span class='d-block'>Hoàng Việt Hưng đã mở một thăm dò</span>
+								</div>
+							</div>
+
+							<div class='media pt-2 pb-1 border-bottom border-gray'>
+								<div class='media-body pb-1 mb-0 small lh-125'>
+                                        <div class='d-flex justify-content-between align-items-center w-100'>
+                                            <strong class='text-gray-dark'>
+                                                <i class='fas fa-users mr-2'></i>Sinh viên khóa K61
+                                            </strong>
+                                            <span class='d-block small'>1 tháng trước</span>
+                                        </div>
+                                        <span class='d-block'>Phòng Đào Tạo đã mở một khảo sát</span>
+                                    </div>
+                                </div>
+
+                                <div class='media pt-2 pb-1 text-muted border-bottom border-gray'>
+                                    <div class='media-body pb-1 mb-0 small lh-125'>
+                                        <div class='d-flex justify-content-between align-items-center w-100'>
+                                            <strong class='text-gray-dark'>
+                                                <i class='fas fa-code mr-2'></i>Sinh viên khoa CNTT
+                                            </strong>
+                                            <span class='d-block small'>10 giờ trước</span>
+                                        </div>
+                                        <span class='d-block'>Trần Văn Định đã trả lời bình luận của bạn</span>
+                                    </div>
+                                </div>
+                                
+                                <span class='d-block small pt-2 pb-1 '>
+                                    <i class='fas fa-caret-down mr-2 align-self-center'></i>
+                                    Xem thêm
+                                </span>
+                            "
+                        >
+                            <i class="fas fa-bell mr-2"></i>
+                            Thông báo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+					<a
+						href="#"
+						class="nav-link ml-4"
+						data-toggle="popover"
+						data-trigger="focus"
+						data-placement="bottom"
+						data-container="#navibar"
+						data-html="true"
+ 						title=""
+						data-content="
+							<div class='media pt-2 pb-1 border-bottom border-gray'>
+								<img src='img/ava_blue.svg' alt='32x32' class='mr-2 rounded' style='width: 32px; height: 32px;' data-holder-rendered='true'>
+								<div class='media-body pb-1 mb-0 small lh-125'>
+									<div class='d-flex justify-content-between align-items-center w-100'>
+                                        <strong class='text-gray-dark'>Hoàng Việt Hưng</strong>
+                                        <span class='d-block small'>1 giờ trước</span>
+									</div>
+									<span class='d-block'>Đi họp lớp không Hiếu?</span>
+								</div>
+							</div>
+
+ 							<div class='media text-muted pt-2 pb-1 border-bottom border-gray'>
+                                    <img src='img/ava_purple.svg' alt='32x32' class='mr-2 rounded' style='width: 32px; height: 32px;' data-holder-rendered='true'>
+                                    <div class='media-body pb-1 mb-0 small lh-125'>
+                                        <div class='d-flex justify-content-between align-items-center w-100'>
+                                        <strong class='text-gray-dark'>Tuấn Hưng</strong>
+                                        <span class='d-block small'>2 tuần trước</span>
+                                        </div>
+                                        <span class='d-block'>Đi hát đê em ei</span>
+                                    </div>
+							</div>
+							
+							<div class='media text-muted pt-2 pb-1 border-bottom border-gray'>
+                                    <img src='img/ava_purple.svg' alt='32x32' class='mr-2 rounded' style='width: 32px; height: 32px;' data-holder-rendered='true'>
+                                    <div class='media-body pb-1 mb-0 small lh-125'>
+                                        <div class='d-flex justify-content-between align-items-center w-100'>
+                                        <strong class='text-gray-dark'>Mỹ Tâm</strong>
+                                        <span class='d-block small'>1 tháng trước</span>
+                                        </div>
+                                        <span class='d-block'>Xin chào Trần Minh Hiếu!</span>
+                                    </div>
+							</div>
+							<span class='d-block small pt-2 pb-1 '>
+								<i class='fas fa-caret-down mr-2 align-self-center'></i>
+								Xem thêm
+							</span>
+						">
+					<i class="fas fa-comment-alt mr-2"></i>
+                            Tin nhắn
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link ml-4">
+						<i class="fas fa-user mr-2"></i>
+						Trần Minh Hiếu
+ 					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container-fluid">
+		<div class="row">
+			<div id="left-content" class="col-3 d-flex">
+				<div id="left" class="ml-auto">
+					<ul class="list-unstyled mr-5">
+						<li id="tanglike"><i class="fas fa-caret-up fa-2x"></i></li>
+						<li id="like">30</li>
+						<li id="giamlike"><i class="fas fa-caret-down fa-2x"></i></li>
+						<li><i class="fas fa-comment fa-lg"></i></li>
+						<li>11</li>
+						<li><i></i></li>
+					</ul>
+				</div>
+			</div>
+			<div id="middle-content" class="col-6 mt-5">
+				<div class="media">
+					<img src="img/ava_blue.svg" alt="" class="mr-2 rounded-circle" width="60px;">
+	    			<div class="media-body">
+	    				<h4>Trần Văn Định</h4>
+	    				<p>Đăng trong tâm sự chuyện trò hôm qua - 5h trước></p>
+	    			</div>
+				</div>
+				<h2 class="mt-3">Tại sao các cô gái Việt Nam lại rất xinh xắn</h2>
+				<div id="content-post" class="mt-4">
+					<p>
+					Vậy là, bạn muốn biết lý do "Tại sao các cô gái Việt Nam lại rất xinh xắn" phỏng?
+					Vẻ đẹp của phụ nữ Việt Nam ngày nay là kết quả của một cuộc tiến hóa đã kéo dài hơn 2000 năm, mà nền tảng chủ yếu chính là những món ăn quốc hồn quốc túy họ tiêu thụ hàng ngày.
+					- Là kết quả của việc tiêu thụ “nước mắm” làm từ cá tươi vừa đánh lưới rồi được lên men với muối biển một cách chậm rãi để đạt đến độ hoàn hảo.
+					- Là kết quả của việc nồng nhiệt dùng ‘mắm nêm’ - được chế biến từ cá cơm tươi vừa đánh bắt, lên men thành thứ nước chấm sền sệt mặn mà thơm ngon – vốn là một loại nước chấm chủ yếu ở Việt Nam.
+					- Là kết quả của việc mỗi ngày mỗi ngày đều tiêu thụ ‘mắm tôm’ – loại nước chấm đặc biệt cho tôm/nhuyễn thể lên men với muối và để già cho đến lúc kết thành một lớp màu be dày đáng yêu - bổ sung thêm hương vị nồng đậm khi chúng tôi chế biến món ăn.
+					- Là kết quả của việc dùng món rau lên men đặc biệt, "cải muối", và một món chứa rất nhiều cà mang tên "cà muối" – vốn là những món ăn đồng hành đặc biệt không thể thiếu giúp ăn cơm ngon miệng hơn rất nhiều.
+					- Là kết quả của việc đều đặn ăn rau muống, một loại rau xanh chứa nhiều chất xơ và khá giòn, vốn có tác dụng tuyệt vời trong việc giúp cho phụ nữ trở nên tươi trẻ, mạnh mẽ và tràn đầy khí lực.
+					- Và cũng là kết quả của việc ăn hàng ngày một thứ khác, món rau bina Châu Á, "rau mồng tơi", giúp chúng tôi duy trì nụ cười tươi tắn trên môi – do nó có tác dụng trong việc giúp tiêu hóa những món đã ăn trước đó trong ngày dễ dàng hơn.
+					‘Vẻ đẹp Việt Nam’ là kết quả trực tiếp của việc hấp thụ những món ăn quốc hồn quốc túy qua hàng thế kỷ, giúp thúc đẩy ý thức hệ và giúp sự gắn kết giữa người với người ngày càng sâu sắc và sâu sắc hơn. Chính điều đó, những người bạn bè quốc tế của tôi ạ, đã tạo nên vẻ đẹp “Đậm đà” cho phụ nữ Việt.
+					Mặc dù người dân các nước khác có thể muốn thử phương pháp này, nhưng hãy nhớ rằng, ‘vẻ đẹp Việt Nam’ không có được chỉ sau một sớm một chiều. Chính việc trải quả nhiều nhiều thế kỷ tôn trọng gìn giữ văn hóa đã giúp cho phụ nữ Việt Nam chín đến độ hoàn hảo.
+					</p>
+				</div>
+				<div class="d-flex">
+					<div class="ml-auto"><i class="fas fa-eye"></i><small id="view"> 10000 </small><small>lượt xem</small></div>
+				</div>
+				<div class="ml-2">
+					<i class=""></i>
+					14 bình luận
+				</div>
+				<div id="comment" class="mt-0">
+					<div id="yourcomment" class="mt-3 input-group">
+						<input type="text" class="form-control" placeholder="Chia sẻ cảm nghĩ của bạn về bài viết" aria-label="" aria-describedby="button2">
+  						<div class="input-group-append">
+							<button class="btn btn-outline-success" type="button" id="button2">Gửi</button>
+						</div>
+					</div>
+					<div></div>
+					<hr>
+					<ul class="list-unstyled">
+						<li class="d-flex">
+							<div>
+							</div>
+							<div id="frist-cm" class="media">
+								<img src="img/ava_blue.svg" alt="" class="mr-2" width="40px;" style="border-radius: 100%">
+		    					<div class="media-body">
+		    						<h6>Nguyễn Trung Hiếu</h6>
+		    						<p><small>4h trước</small></p>
+		    						<div id="comment-content">Hay vcl ae ạ!!</div>
+		    						<div id="traloi">Trả lời</div>
+		    					</div>
+	    					</div>
+	    					<div id="second-cm"></div>
+						</li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+			<div id="right-content" class="col-3">
+					
+			</div>
+		</div>
+	</div>
+	<script src="js/C007.js"></script>
+</body>
+</html>
