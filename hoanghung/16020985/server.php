@@ -9,6 +9,7 @@
         $urn_sign_up = mysqli_real_escape_string($db, $_POST['urn_sign_up']);
         $psw_sign_up = mysqli_real_escape_string($db, $_POST['psw_sign_up']);
         $cf_psw_sign_up = mysqli_real_escape_string($db, $_POST['cf_psw_sign_up']);
+        $check_sign_up = "SELECT * FROM user WHERE username = '$urn_sign_up'";
         if(($psw_sign_up == $cf_psw_sign_up) && (preg_match('/^[a-zA-Z0-9]{5,}$/', $urn_sign_up))) {
             $psw_sign_up = md5($psw_sign_up);
             $sql = "INSERT INTO user(username, password_user) VALUES ('$urn_sign_up', '$psw_sign_up')";
