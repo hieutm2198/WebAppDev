@@ -11,9 +11,7 @@ a{
 	color: rgb(84, 84, 84);
 }
 
-input {
-	outline: none;
-}
+
 #navibar .popover {
     width: 400px;
     max-width: none;
@@ -35,4 +33,10 @@ input {
 
 #left {
 	margin-top: 200px;
+}
+
+#right-content {
+    position: fixed;
+    top: 58px;
+    right: 0;
 }

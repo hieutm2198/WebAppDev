@@ -33,6 +33,20 @@ $("#giamlike").click(function(){
 	}
 });
 
+function ansCmt(){
+	
+};
+
 $("#traloi").click(function(){
-	$("#second-cm").append($("#frist-cm").html());
+	$(this).css("color","blue");
+	var x = document.createElement("p");
+	x.innerHTML = "text"
+	$(this).after(x);
 });
+
+
+
+
+
+
+
