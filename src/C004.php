@@ -84,7 +84,7 @@
                     answerList: answerList
                 },
                 success: function (result) {                        
-                    console.log(result);
+                    window.location.replace("B007.php");
                 }
             });
         }
