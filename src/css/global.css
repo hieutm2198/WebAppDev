@@ -1,0 +1,22 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+#navibar .popover {
+    width: 400px;
+    max-width: none;
+}   
+#left-content {
+    position: fixed;
+    top: 58px;
+    left: 0;
+}
+#right-content {
+    position: fixed;
+    top: 58px;
+    right: 0;
+}
+#middle-content {
+    position: relative;
+    left: 25%;
+}

@@ -1,0 +1,9 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+#navibar .popover {
+    width: 400px;
+    max-width: none;
+}
