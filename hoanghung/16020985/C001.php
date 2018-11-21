@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,6 +20,14 @@
         <link rel="stylesheet" href="css/C001.css">
     </head>
     <body>
+        <?php
+            if(isset($_SESSION['status'])) {
+                echo "<script>";
+                echo "alert('You are logged in');";
+                echo "</script>";
+                unset($_SESSION['status']);
+            }
+        ?>
         <nav id="navibar" class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-dark sticky-top">
             <a class="navbar-brand" href="#">
                 <img src="img/logo_c9.svg" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -139,13 +150,21 @@
                             "
                         >
                             <i class="fas fa-comment-alt mr-2"></i>
-                            Tin nhắn
+                            <?php
+                                if(isset($_SESSION['msv'])) {
+                                    echo $_SESSION['msv'];
+                                }
+                            ?>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link ml-4">
+                        <a href="server.php?profile='1'" class="nav-link ml-4">
                             <i class="fas fa-user mr-2"></i>
-                            Trần Minh Hiếu
+                            <?php
+                                if(isset($_SESSION['username'])) {
+                                    echo $_SESSION['username'];
+                                }
+                            ?>
                         </a>
                     </li>
                 </ul>
@@ -519,5 +538,6 @@
 
             </div>
         </div>
+
     </body>
 </html>
