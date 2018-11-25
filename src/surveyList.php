@@ -6,7 +6,7 @@
     $response;
 
     while($row = $result -> fetch_assoc()) {
-        $response -> data[] = array(
+        $response -> requiredSurvey[] = array(
             surveyId => $row['MaKS'],
             surveyTitle => $row['TieuDe'],
             creatorId => $row['MaNguoiTao'],
@@ -14,5 +14,8 @@
             
         );
     }
+
+    
+
     die(json_encode($response, JSON_UNESCAPED_UNICODE));
 ?>

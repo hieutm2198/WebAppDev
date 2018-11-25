@@ -125,7 +125,7 @@ $(document).ready(function() {
         else {
             userTable.$('tr.table-success').removeClass('table-success');
             $(this).addClass('table-success');
-            selectedUserId = parseInt(surveyTable.row( this ).data()["userId"]);
+            selectedUserId = parseInt(surveyTable.row(this).data()["userId"]);
         }
     } );
 });
