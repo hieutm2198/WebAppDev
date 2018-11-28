@@ -148,7 +148,7 @@ $sql = 'select count(MaTH) as SoNguoiThamGia from thuchienkhaosat where MaKS = '
                 echo '<div class="small font-italic">';
                     echo '16/11/2018 11:25';
                 echo '</div>';
-                echo '<button type="button" class="btn btn-outline-secondary btn-sm" onclick="viewDetail(' . $savedIdList[$i] . ')">';
+                echo '<button type="button" class="btn btn-outline-secondary btn-sm" onclick="editSurvey(' . $savedIdList[$i] . ')">';
                     echo 'Sửa';
                 echo'</button>';
             echo '</div>';

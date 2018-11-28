@@ -45,7 +45,14 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"> 
         <!-- Awesome Icon -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+
+        <script>
+<?php
+    echo 'var surveyId = ' . $_GET['khaosat'] . ';';
+?>
+        </script>
         <script src="js/B009.js"></script>
+        
         <link rel="stylesheet" href="css/B009.css">
         <!-- Google chart -->
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -128,7 +135,7 @@
                                 <i class="fas fa-pause mr-1"></i>
                                 Ngừng
                             </button>
-                            <button class="btn btn-outline-danger">
+                            <button class="btn btn-outline-danger" onclick="deleteSurvey()">
                                 <i class="fas fa-trash-alt mr-1"></i>
                                 Xóa
                             </button>

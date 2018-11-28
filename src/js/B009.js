@@ -24,3 +24,16 @@ function hideQuestions() {
         isQuestionsHiding = true;
     }
 }
+
+function deleteSurvey() {
+    $.ajax({
+        url: "deleteSurvey.php",
+        type: "post",
+        data: {
+            surveyId: surveyId
+        },
+        success: function(response) {
+            window.location.replace("B007.php");
+        }
+    });
+}

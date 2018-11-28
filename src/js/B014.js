@@ -2,6 +2,101 @@ var questionList = [];
 var questionTypeList = [];
 var answerList = [];
 
+$(document).ready( function(){
+    $.ajax({
+        url: "surveyDetail.php",
+        type: "post",
+        data: {
+            surveyId: surveyId
+        },
+        success: function(response) {
+            var result = JSON.parse(response);
+            $('#surveyTitle').val(result["surveyName"]);
+            var questionObjectList = result["question"];
+            console.log(questionObjectList);
+            for(var i = 0; i < questionObjectList.length; ++i) {
+                questionList.push(questionObjectList[i]["questionContent"]);
+                questionTypeList.push(questionObjectList[i]["questionType"]);
+                var answerObjectList = questionObjectList[i]["answer"];
+                var answerForQuestion = [];
+                for(var j = 0; j < answerObjectList.length; ++j) {
+                    answerForQuestion.push(answerObjectList[j]["answerContent"]);
+                }
+                answerList.push(answerForQuestion);
+            }
+
+            for(var i = 0; i < questionList.length; ++i) {
+                
+                var newQuestionContainer = document.createElement("div");
+                newQuestionContainer.className = "mt-3 mb-2 pb-3 border-bottom border-gray question-container";
+                var newQuestionElement = document.createElement("h5");
+                var newQuestionElementText = document.createTextNode(questionList[i]);
+                
+                newQuestionElement.append(newQuestionElementText);
+                newQuestionContainer.append(newQuestionElement);
+
+                
+                document.getElementById("questionList").append(newQuestionContainer);
+                for(var j = 0; j < answerList[i].length; ++j) {
+                    var formCheck = document.createElement("div");
+                    formCheck.className = "form-group form-check";
+                    var checkElement = document.createElement("input");
+                    if(questionTypeList[i] == "single") {
+                        
+                        checkElement.setAttribute("type", "radio");
+                        checkElement.setAttribute("name", "checkbox");
+            
+                    } else if(questionTypeList[i] == "multi") {
+                        checkElement.setAttribute("type", "checkbox");
+                    } else { //TODO type: free
+            
+                    }
+                    checkElement.className = "form-check-input";
+                    var answerContentLabel = document.createElement("label");
+                    answerContentLabel.className = "form-check-label";
+                    var answerContent = document.createTextNode(answerList[i][j]);
+                    
+                    answerContentLabel.append(answerContent);
+                    formCheck.append(checkElement);
+                    formCheck.append(answerContentLabel);
+                    newQuestionContainer.append(formCheck);
+            
+                }
+            
+                var editButton = document.createElement("button");
+                editButton.className = "btn btn-outline-secondary mr-2";
+                editButton.append(document.createTextNode("Sửa"));
+                editButton.onclick = function () {
+                    
+                }
+                var deleteButton = document.createElement("button");
+                deleteButton.className = "btn btn-outline-danger";
+                deleteButton.append(document.createTextNode("Xóa"));
+                deleteButton.onclick = function (event) {
+                    var itemToDelete = event.target.parentNode;
+                    var questContainerArray = document.getElementsByClassName("question-container");
+                    for(var i = 0; i < questContainerArray.length; ++i) {
+                        if(itemToDelete === questContainerArray[i]) {
+                            itemToDelete.remove();
+                            questionList.splice(i, 1);
+                            questionTypeList.splice(i, 1);
+                            answerList.splice(i, 1);
+                            break;        
+                        }
+                    }
+                }
+                
+                newQuestionContainer.append(editButton);
+                newQuestionContainer.append(deleteButton);
+
+                
+            }
+        }
+    });
+
+    
+});
+
 function addAnswer() {
     var newInputGroup = document.createElement("div");
     newInputGroup.className = "input-group mt-2";
@@ -113,14 +208,16 @@ function addQuestion() {
     
 }
 
+
 function sendSurvey() {
     surveyTitle = document.getElementById("surveyTitle").value;
     var surveyStatus = 'published';
     $.ajax({
-        url: "newSurvey.php",
+        url: "updateSurvey.php",
         type: "post",
         // dataType: "text",
         data: {
+            surveyId: surveyId,
             surveyTitle: surveyTitle,
             questionList: questionList,
             questionTypeList: questionTypeList,
@@ -128,7 +225,7 @@ function sendSurvey() {
             surveyStatus: surveyStatus
         },
         success: function (result) {                        
-            detailPage = "B009.php?khaosat=" + result;
+            detailPage = "B009.php?khaosat=" + surveyId;
             window.location.replace(detailPage);
         }
     });
@@ -138,10 +235,11 @@ function saveSurvey() {
     surveyTitle = document.getElementById("surveyTitle").value;
     var surveyStatus = 'saved';
     $.ajax({
-        url: "newSurvey.php",
+        url: "updateSurvey.php",
         type: "post",
         // dataType: "text",
         data: {
+            surveyId: surveyId,
             surveyTitle: surveyTitle,
             questionList: questionList,
             questionTypeList: questionTypeList,
@@ -149,12 +247,21 @@ function saveSurvey() {
             surveyStatus: surveyStatus
         },
         success: function (result) {                        
-            detailPage = "B009.php?khaosat=" + result;
+            detailPage = "B009.php?khaosat=" + surveyId;
             window.location.replace(detailPage);
         }
     });
 }
 
 function deleteSurvey() {
-    
+    $.ajax({
+        url: "deleteSurvey.php",
+        type: "post",
+        data: {
+            surveyId: surveyId
+        },
+        success: function(response) {
+            window.location.replace("B007.php");
+        }
+    });
 }
