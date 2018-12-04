@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+    include('server.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,19 +16,25 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"> 
         <!-- Awesome Icon -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+        <!-- Google Icon -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="js/C001.js"></script>
         <link rel="stylesheet" href="css/C001.css">
     </head>
     <body>
-        <?php
+        <!-- <?php
             if(isset($_SESSION['status'])) {
                 echo "<script>";
                 echo "alert('You are logged in');";
                 echo "</script>";
                 unset($_SESSION['status']);
             }
-        ?>
+        ?> -->
         <nav id="navibar" class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-dark sticky-top">
+            <label class="switch navbar-brand">
+                <input onclick="show_hideNav(this)" type="checkbox" checked>
+                <span class="slider"></span>
+            </label>
             <a class="navbar-brand" href="#">
                 <img src="img/logo_c9.svg" width="30" height="30" class="d-inline-block align-top" alt="">
                 UET graduate forum
@@ -38,127 +44,33 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active ml-4">
-                                <i class="fas fa-home mr-2"></i>
-                                Trang chủ
-                            </a>
-                        </li>
                     <li class="nav-item">
-                        <a
-                            href="#"
+                        <a href="#" class="nav-link active ml-4">
+                            <i class="fas fa-home mr-2"></i>
+                            Trang chủ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <span id="an_hien_thongbao"
+                            style="cursor: pointer"
                             class="nav-link ml-4"
                             data-toggle="popover"
-                            data-trigger="focus"
                             data-placement="bottom"
                             data-container="#navibar"
                             data-html="true"
                             title=""
                             data-content="
-                                <div class='media pt-2 pb-1 border-bottom border-gray'>
-                                    <div class='media-body pb-1 mb-0 small lh-125'>
-                                        <div class='d-flex justify-content-between align-items-center w-100'>
-                                            <strong class='text-gray-dark'>
-                                                <i class='fas fa-landmark mr-2'></i>Lớp QH2016-I/CQ-C-D
-                                            </strong>
-                                            <span class='d-block small'>3 ngày trước</span>
-                                        </div>
-                                        <span class='d-block'>Hoàng Việt Hưng đã mở một thăm dò</span>
-                                    </div>
+                                <div id='load_thongbao' style='height: 400px; overflow-y: auto'>
                                 </div>
-
-                                <div class='media pt-2 pb-1 border-bottom border-gray'>
-                                    <div class='media-body pb-1 mb-0 small lh-125'>
-                                        <div class='d-flex justify-content-between align-items-center w-100'>
-                                            <strong class='text-gray-dark'>
-                                                <i class='fas fa-users mr-2'></i>Sinh viên khóa K61
-                                            </strong>
-                                            <span class='d-block small'>1 tháng trước</span>
-                                        </div>
-                                        <span class='d-block'>Phòng Đào Tạo đã mở một khảo sát</span>
-                                    </div>
-                                </div>
-
-                                <div class='media pt-2 pb-1 text-muted border-bottom border-gray'>
-                                    <div class='media-body pb-1 mb-0 small lh-125'>
-                                        <div class='d-flex justify-content-between align-items-center w-100'>
-                                            <strong class='text-gray-dark'>
-                                                <i class='fas fa-code mr-2'></i>Sinh viên khoa CNTT
-                                            </strong>
-                                            <span class='d-block small'>10 giờ trước</span>
-                                        </div>
-                                        <span class='d-block'>Trần Văn Định đã trả lời bình luận của bạn</span>
-                                    </div>
-                                </div>
-                                
-                                <span class='d-block small pt-2 pb-1 '>
-                                    <i class='fas fa-caret-down mr-2 align-self-center'></i>
-                                    Xem thêm
-                                </span>
                             "
                         >
-                            <i class="fas fa-bell mr-2"></i>
+                            <span class="fas fa-bell mr-2"><i id="count_thongbao" class="badge badge-danger ml-auto"
+                            style="position: relative; top: -8px; left: -4px"></i></span>
                             Thông báo
-                        </a>
+                        </span>
                     </li>
                     <li class="nav-item">
-                        <a
-                            href="#"
-                            class="nav-link ml-4"
-                            data-toggle="popover"
-                            data-trigger="focus"
-                            data-placement="bottom"
-                            data-container="#navibar"
-                            data-html="true"
-                            title=""
-                            data-content="
-                                <div class='media pt-2 pb-1 border-bottom border-gray'>
-                                    <img src='img/ava_blue.svg' alt='32x32' class='mr-2 rounded' style='width: 32px; height: 32px;' data-holder-rendered='true'>
-                                    <div class='media-body pb-1 mb-0 small lh-125'>
-                                        <div class='d-flex justify-content-between align-items-center w-100'>
-                                        <strong class='text-gray-dark'>Hoàng Việt Hưng</strong>
-                                        <span class='d-block small'>1 giờ trước</span>
-                                        </div>
-                                        <span class='d-block'>Đi họp lớp không Hiếu?</span>
-                                    </div>
-                                </div>
-
-                                <div class='media text-muted pt-2 pb-1 border-bottom border-gray'>
-                                    <img src='img/ava_purple.svg' alt='32x32' class='mr-2 rounded' style='width: 32px; height: 32px;' data-holder-rendered='true'>
-                                    <div class='media-body pb-1 mb-0 small lh-125'>
-                                        <div class='d-flex justify-content-between align-items-center w-100'>
-                                        <strong class='text-gray-dark'>Tuấn Hưng</strong>
-                                        <span class='d-block small'>2 tuần trước</span>
-                                        </div>
-                                        <span class='d-block'>Đi hát đê em ei</span>
-                                    </div>
-                                </div>
-                                <div class='media text-muted pt-2 pb-1 border-bottom border-gray'>
-                                    <img src='img/ava_purple.svg' alt='32x32' class='mr-2 rounded' style='width: 32px; height: 32px;' data-holder-rendered='true'>
-                                    <div class='media-body pb-1 mb-0 small lh-125'>
-                                        <div class='d-flex justify-content-between align-items-center w-100'>
-                                        <strong class='text-gray-dark'>Mỹ Tâm</strong>
-                                        <span class='d-block small'>1 tháng trước</span>
-                                        </div>
-                                        <span class='d-block'>Xin chào Trần Minh Hiếu!</span>
-                                    </div>
-                                </div>
-                                <span class='d-block small pt-2 pb-1 '>
-                                    <i class='fas fa-caret-down mr-2 align-self-center'></i>
-                                    Xem thêm
-                                </span>
-                            "
-                        >
-                            <i class="fas fa-comment-alt mr-2"></i>
-                            <?php
-                                if(isset($_SESSION['msv'])) {
-                                    echo $_SESSION['msv'];
-                                }
-                            ?>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="server.php?profile='1'" class="nav-link ml-4">
+                        <a href="profile.php" class="nav-link ml-4">
                             <i class="fas fa-user mr-2"></i>
                             <?php
                                 if(isset($_SESSION['username'])) {
@@ -172,372 +84,210 @@
         </nav>
         <div class="container-fluid">
             <div class="row">
-                <div id="left-content" class="col-3 border-right">                    
-                    <p class="h6 mt-4">Nhóm</p>
+                <div id="left-content" class="col-2 border-right p-0 pt-4">
                     <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
-                            <i class="fas fa-user-graduate mr-2"></i>
-                            Cựu sinh viên UET
-                            <span class="badge badge-success badge-pill ml-auto">12</span>
+                        <a href="profile.php" class="list-group-item list-group-item-action pb-3" 
+                        style="border: none">
+                            <image src="image/<?php echo $_SESSION['anh'] ?>" alt="" class="mr-2 rounded-circle" width="50px" height="50px"></i>
+                            <span style="font-weight: 500; font-size: 15px"><?php echo $_SESSION['username'] ?></span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
-                            <i class="fas fa-users mr-2"></i>
-                            Sinh viên khóa K61
-                            <span class="badge badge-success badge-pill ml-auto">3</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
-                            <i class="fas fa-code mr-2"></i>
-                            Sinh viên khoa CNTT
-                            <span class="badge badge-success badge-pill ml-auto">11</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
-                            <i class="fas fa-landmark mr-2"></i>
-                            Lớp QH2016-I/CQ-C-D
-                            <span class="badge badge-success badge-pill ml-auto">1</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
-                            <i class="fas fa-book-open mr-2"></i>
-                            Thư viện Hội Sinh Viên
-                            <span class="badge badge-success badge-pill ml-auto">0</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <i class="fas fa-caret-down mr-2"></i>
-                            Xem thêm...
-                        </a>
-                    </div>
-                    <p class="h6 mt-4">Khảo sát</p>
-                    <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Khảo sát mức độ hài lòng thu nhập
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Khảo sát địa điểm làm việc
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                            Thu thập thông tin việc làm của sinh viên
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <i class="fas fa-caret-down mr-2"></i>
-                            Xem thêm...
-                        </a>
+                        <?php 
+                            if($_SESSION['role_user'] != "normal") {
+                                echo "<a href='admin.php' class='list-group-item list-group-item-action p-3 pl-4' style='border: none'>Trang quản lý</a>";
+                            }
+                        ?>
+                        <a href="B007.php" class="list-group-item list-group-item-action p-3 pl-4" style="border: none">Khảo sát</a>
+                        <a href="server.php?logout='1'" class="list-group-item list-group-item-action p-3 pl-4" style="border: none">Đăng xuất</a>
+                        <button id="button_add_post" class="btn btn-outline-primary ml-4 mt-4"
+                        style="width: 80%" 
+                        onclick="document.getElementById('new_post').style.display='block';">
+                        <i class="material-icons mr-1" style="font-size: 20px; position: relative; top: 4px;">add</i>
+                        Thêm bài viết
+                        </button>
+                        
                     </div>
                 </div>
-                <div id="middle-content" class="col-6">
-                    <div class="card mt-4">
-                        <h5 class="card-header">
-                                <i class="fas fa-landmark mr-2"></i>
-                                Lớp QH2016-I/CQ-C-D
-                        </h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Hoàng Việt Hưng đã mở một thăm dò</h5>
-                            <p class="card-text">Họp lớp nhân dịp đầu Xuân 2030.</p>
-                            <p class="card-text"><small class="text-muted">3 ngày trước</small></p>
-                            <a href="#" class="btn btn-outline-success">Chi tiết</a>
+                <div id="middle-content" class="col-7">
+                    <div id="load_post"></div>
+                    <div id="tinnhan" class="card" style="width: 22%; position: fixed; bottom: 0; right: 21%; display: none">
+                        <div class="card-header p-1 pl-2" style="font-size: 15px; font-weight: 400; position: relative">
+                            <i id="online_status" class='fas fa-circle text-success' style='font-size: 8px; position: relative; top: -2px'></i>
+                            <a href="#" style="color: black" id="user_chat"></a>
+                            <i id="close_chat" class="material-icons" style="position: absolute; right: 2%; font-size: 19px; top: 5px">clear</i>
                         </div>
-                    </div>
-                    <div class="card mt-4">
-                        <h5 class="card-header">
-                                <i class="fas fa-users mr-2"></i>
-                                Sinh viên khóa K61
-                        </h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Phòng Đào Tạo đã mở một khảo sát</h5>
-                            <p class="card-text">Khảo sát về tỷ lệ sinh viên làm việc liên quan đến công tác giáo dục.</p>
-                            <p class="card-text"><small class="text-muted">20/12/2029 (1 tháng trước)</small></p>
-                            <a href="#" class="btn btn-outline-success">Chi tiết</a>
+                        <div id="message" class="card-body p-0" style="height: 260px; overflow-y: auto;">
+                            
                         </div>
-                    </div>
-                    <div class="card mt-4">
-                        <h5 class="card-header">
-                                <i class="fas fa-code mr-2"></i>
-                                Sinh viên khoa CNTT
-                        </h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Trần Văn Định đã trả lời bình luận của bạn</h5>
-                            <p class="card-text">[RE#123][#189] Hôm nay có việc bận.</p>
-                            <p class="card-text"><small class="text-muted">10 giờ trước</small></p>
-                            <a href="#" class="btn btn-outline-success">Trả lời</a>
-                        </div>
-                    </div>
-                    <div class="card mt-4">
-                        <h5 class="card-header">
-                                <i class="fas fa-landmark mr-2"></i>
-                                Lớp QH2016-I/CQ-C-D
-                        </h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Hoàng Việt Hưng đã mở một thăm dò</h5>
-                            <p class="card-text">Họp lớp nhân dịp đầu Xuân 2030.</p>
-                            <p class="card-text"><small class="text-muted">3 ngày trước</small></p>
-                            <a href="#" class="btn btn-outline-success">Chi tiết</a>
-                        </div>
-                    </div>
-                    <div class="card mt-4">
-                        <h5 class="card-header">
-                                <i class="fas fa-users mr-2"></i>
-                                Sinh viên khóa K61
-                        </h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Phòng Đào Tạo đã mở một khảo sát</h5>
-                            <p class="card-text">Khảo sát về tỷ lệ sinh viên làm việc liên quan đến công tác giáo dục.</p>
-                            <p class="card-text"><small class="text-muted">20/12/2029 (1 tháng trước)</small></p>
-                            <a href="#" class="btn btn-outline-success">Chi tiết</a>
-                        </div>
-                    </div>
-                    <div class="card mt-4">
-                        <h5 class="card-header">
-                                <i class="fas fa-code mr-2"></i>
-                                Sinh viên khoa CNTT
-                        </h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Trần Văn Định đã trả lời bình luận của bạn</h5>
-                            <p class="card-text">[RE#123][#189] Hôm nay có việc bận.</p>
-                            <p class="card-text"><small class="text-muted">10 giờ trước</small></p>
-                            <a href="#" class="btn btn-outline-success">Trả lời</a>
-                        </div>
-                    </div>
-                    <div class="card mt-4">
-                        <h5 class="card-header">
-                                <i class="fas fa-landmark mr-2"></i>
-                                Lớp QH2016-I/CQ-C-D
-                        </h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Hoàng Việt Hưng đã mở một thăm dò</h5>
-                            <p class="card-text">Họp lớp nhân dịp đầu Xuân 2030.</p>
-                            <p class="card-text"><small class="text-muted">3 ngày trước</small></p>
-                            <a href="#" class="btn btn-outline-success">Chi tiết</a>
-                        </div>
-                    </div>
-                    <div class="card mt-4">
-                        <h5 class="card-header">
-                                <i class="fas fa-users mr-2"></i>
-                                Sinh viên khóa K61
-                        </h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Phòng Đào Tạo đã mở một khảo sát</h5>
-                            <p class="card-text">Khảo sát về tỷ lệ sinh viên làm việc liên quan đến công tác giáo dục.</p>
-                            <p class="card-text"><small class="text-muted">20/12/2029 (1 tháng trước)</small></p>
-                            <a href="#" class="btn btn-outline-success">Chi tiết</a>
-                        </div>
-                    </div>
-                    <div class="card mt-4">
-                        <h5 class="card-header">
-                                <i class="fas fa-code mr-2"></i>
-                                Sinh viên khoa CNTT
-                        </h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Trần Văn Định đã trả lời bình luận của bạn</h5>
-                            <p class="card-text">[RE#123][#189] Hôm nay có việc bận.</p>
-                            <p class="card-text"><small class="text-muted">10 giờ trước</small></p>
-                            <a href="#" class="btn btn-outline-success">Trả lời</a>
-                        </div>
-                    </div>
-                    <div class="card mt-4">
-                        <h5 class="card-header">
-                                <i class="fas fa-landmark mr-2"></i>
-                                Lớp QH2016-I/CQ-C-D
-                        </h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Hoàng Việt Hưng đã mở một thăm dò</h5>
-                            <p class="card-text">Họp lớp nhân dịp đầu Xuân 2030.</p>
-                            <p class="card-text"><small class="text-muted">3 ngày trước</small></p>
-                            <a href="#" class="btn btn-outline-success">Chi tiết</a>
-                        </div>
-                    </div>
-                    <div class="card mt-4">
-                        <h5 class="card-header">
-                                <i class="fas fa-users mr-2"></i>
-                                Sinh viên khóa K61
-                        </h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Phòng Đào Tạo đã mở một khảo sát</h5>
-                            <p class="card-text">Khảo sát về tỷ lệ sinh viên làm việc liên quan đến công tác giáo dục.</p>
-                            <p class="card-text"><small class="text-muted">20/12/2029 (1 tháng trước)</small></p>
-                            <a href="#" class="btn btn-outline-success">Chi tiết</a>
-                        </div>
-                    </div>
-                    <div class="card mt-4">
-                        <h5 class="card-header">
-                                <i class="fas fa-code mr-2"></i>
-                                Sinh viên khoa CNTT
-                        </h5>
-                        <div class="card-body">
-                            <h5 class="card-title">Trần Văn Định đã trả lời bình luận của bạn</h5>
-                            <p class="card-text">[RE#123][#189] Hôm nay có việc bận.</p>
-                            <p class="card-text"><small class="text-muted">10 giờ trước</small></p>
-                            <a href="#" class="btn btn-outline-success">Trả lời</a>
-                        </div>
+                        <textarea id="text_chat" rows="1" class="card-footer p-2" type="text" placeholder="Nhập tin nhắn"></textarea>
                     </div>
                 </div>
-                <div id="right-content" class="col-3 border-left">
-                    <div class="row">
-                        <div class="col-12 border-bottom pb-3">
-                            <p class="h6 mt-4">Tin tức mới</p>
-                            <a href="#" class="text-secondary">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                Đội UET-XXX giành giải nhất cuộc thi ABCXYZ
-                            </a>
-                            <br/>
-                            <a href="#" class="text-secondary">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                Hội nghị AI4Life lần thứ 8 diễn ra thành công
-                            </a>
-                            <br/>
-                            <a href="#" class="text-secondary">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                Trao học bổng CDEFGH
-                            </a>
-                            <br/>
-                            <a href="#" class="text-secondary">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                ĐHQGHN đạt top 1 Châu Á theo BXH QSXYZ
-                            </a>
-                            <br/>
-                            <a href="#" class="text-secondary">
-                                <i class="fas fa-external-link-alt mr-2"></i>
-                                ĐH Công Nghệ triển khai đào tạo tiến sĩ
-                            </a>
-                            <br/>
-                            <a class="text-secondary">
-                                <i class="fas fa-caret-down mr-2"></i>
-                                Xem thêm...
-                            </a>
-                            <br/>
-                        </div>
+                <div class="border-left pl-2" id="right-content" style="width: 19%">
+                    <p class="h6 mt-3">Bạn bè</p>
+                    <div id="user_status" class="pb-2 pl-1" style="height: 450px; overflow-y: auto; border-bottom: 1px solid rgba(173, 172, 172, 0.6)">
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <p class="h6 mt-4">Liên hệ gần đây</p>
-                            <div 
-                                class="media text-muted pt-3"
-                                data-toggle="popover" data-trigger="hover"
-                                data-html="true"
-                                title="
-                                    Trần Văn Định
-                                "
-                                data-content="
-                                    <i class='fas fa-id-card mr-2'></i>
-                                    16020XXX
-                                    <br/>
-                                    <i class='fas fa-building mr-2'></i>
-                                    Giám đốc tại FPT
-                                    <br/>
-                                    <i class='fas fa-landmark mr-2'></i>
-                                    Lớp QH2016-I/CQ-C-D
-                                    <br/>
-                                "
-                            >
-                                <img src="img/ava_pink.svg"" alt="" class="mr-2 rounded" width="40px;">
-                                <div class="media-body pb-1 mb-0 lh-125">
-                                    <div class="d-flex justify-content-between align-items-center w-100">
-                                        <a href="#" class="text-muted"><strong class="text-gray-dark">Trần Văn Định</strong></a>
-                                        <i class="fas fa-circle small text-success"></i>
-                                    </div>
-                                    <span class="d-block small">Đang hoạt động</span>
-                                </div>
-                            </div>
-                            <div 
-                                class="media text-muted pt-3"
-                                data-toggle="popover" data-trigger="hover"
-                                data-html="true"
-                                title="
-                                    Hoàng Việt Hưng
-                                "
-                                data-content="
-                                    <i class='fas fa-id-card mr-2'></i>
-                                    16020XXX
-                                    <br/>
-                                    <i class='fas fa-building mr-2'></i>
-                                    CEO tại Amazon
-                                    <br/>
-                                    <i class='fas fa-landmark mr-2'></i>
-                                    Lớp QH2016-I/CQ-C-D
-                                    <br/>
-                                "
-                            >
-                                <img src="img/ava_blue.svg"" alt="" class="mr-2 rounded" width="40px;">
-                                <div class="media-body pb-1 mb-0 lh-125">
-                                    <div class="d-flex justify-content-between align-items-center w-100">
-                                        <strong class="text-gray-dark">Hoàng Việt Hưng</strong>
-                                        <i class="fas fa-circle small"></i>
-                                    </div>
-                                    <span class="d-block small">Hoạt động 7 phút trước</span>
-                                </div>
-                            </div>
-                            <div 
-                                class="media text-muted pt-3"
-                                data-toggle="popover" data-trigger="hover"
-                                data-html="true"
-                                title="
-                                    Tuấn Hưng
-                                "
-                                data-content="
-                                    <i class='fas fa-id-card mr-2'></i>
-                                    16020XXX
-                                    <br/>
-                                    <i class='fas fa-building mr-2'></i>
-                                    Thánh Nhọ tại Hà Nội
-                                    <br/>
-                                    <i class='fas fa-landmark mr-2'></i>
-                                    Lớp QH2016-I/CQ-C-D
-                                    <br/>
-                                "
-                            >
-                                <img src="img/ava_purple.svg"" alt="" class="mr-2 rounded" width="40px;">
-                                <div class="media-body pb-1 mb-0 lh-125">
-                                    <div class="d-flex justify-content-between align-items-center w-100">
-                                        <strong class="text-gray-dark">Tuấn Hưng</strong>
-                                        <i class="fas fa-circle small"></i>
-                                    </div>
-                                    <span class="d-block small">Hoạt động 3 giờ trước</span>
-                                </div>
-                            </div>
-                            <div 
-                                class="media text-muted pt-3"
-                                data-toggle="popover" data-trigger="hover"
-                                data-html="true"
-                                title="
-                                    Mỹ Tâm
-                                "
-                                data-content="
-                                    <i class='fas fa-id-card mr-2'></i>
-                                    16020XXX
-                                    <br/>
-                                    <i class='fas fa-building mr-2'></i>
-                                    Ca sỹ
-                                    <br/>
-                                    <i class='fas fa-landmark mr-2'></i>
-                                    Lớp QH2016-I/CQ-C-D
-                                    <br/>
-                                "
-                            >
-                                <img src="img/ava_purple.svg"" alt="" class="mr-2 rounded" width="40px;">
-                                <div class="media-body pb-1 mb-0 lh-125">
-                                    <div class="d-flex justify-content-between align-items-center w-100">
-                                        <strong class="text-gray-dark">Mỹ Tâm</strong>
-                                        <i class="fas fa-circle small"></i>
-                                    </div>
-                                    <span class="d-block small">Hoạt động 1 tháng trước</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="result_user" class="row mt-2 ml-1" style="width: 100%; height: 60px; overflow-y: auto">
                     </div>
-                    <form action="">
-                        <div class="form-row align-items-center">
-                            <div class="col-10 mt-3">
-                                <input type="text" class="form-control" placeholder="Tìm kiếm người dùng">
-                            </div>
-                            <div class="col-2 mt-3">
-                                <button class="btn btn-outline-success">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
+                    <div class="input-group mt-2" style="width: 95%">
+                        <div class="input-group-prepend">
+                            <span id="search_icon" class="input-group-text"><i class="fa fa-search"></i></span>
                         </div>
-                    </form>
-                    
+                        <input id="search_btn" type="text" class="form-control" placeholder="Search Username">
+                    </div>
                 </div>
-
             </div>
         </div>
-
+        <div id="new_post">
+            <form method="post" action="" enctype="multipart/form-data" id="post_form" style="background-color: rgba(255, 255, 255, 0.911); border-radius: 5px;">
+                <div class="input-group">
+                    <input name="title_post" type="text" class="p-2 mb-3 border-0 w-100" placeholder="Tiêu đề bài viết" style="font-size: 22px; font-weight: 500; border-top-left-radius: 5px; border-top-right-radius: 5px">
+                </div>
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" name="image_post" style="border-radius: 0;" class="custom-file-input" id="inputGroupFile">
+                        <div class="progress">
+                        <label style="border-radius: 0; font-weight: 500;" class="progress-bar progress-bar-striped progress-bar-animated custom-file-label p-2" for="inputGroupFile" style="width: 10%">Choose Image</label></div>
+                    </div>
+                </div>
+                <div class="input-group mt-3">
+                    <div class="input-group-prepend">
+                        <span style="border-radius: 0; font-size: 22px; font-weight: 500;" class="input-group-text pl-4 pr-4">Nội dung</span>
+                    </div>
+                    <textarea name="content_post" style="border-radius: 0;" class="form-control mt-0" rows="18" aria-label="Nội dung"></textarea>
+                </div>
+                <div class="d-flex">
+                    <button type="submit" name="button_add_post" style="border-radius: 0;" class="border-0 btn btn-outline-primary ml-auto">Đăng bài</button>
+                    <button type="button" style="border-radius: 0;" class="border-0 btn btn-outline-danger pl-3 pr-3"
+                    onclick="document.getElementById('new_post').style.display='none'">Hủy</button>
+                </div>
+            </form>
+        </div>
     </body>
+    <script>
+        $(document).ready(function() {
+            $("#close_chat").on("click", function() {
+                $("#tinnhan").hide();
+            })
+            setInterval(function() {
+                $("#user_status").load("load_user.php").fadeIn();
+            }, 500);
+            setInterval(function() {
+                $("#load_post").load("load_post.php").fadeIn("slow");
+            }, 500);
+            setInterval(function() {
+                $("#load_thongbao").load("load_thongbao.php").fadeIn();
+            }, 500)
+            setInterval(function() {
+                $("#count_thongbao").load("load_count_thongbao.php").fadeIn();
+            }, 500)
+        })
+        $(document).ready(function() {
+            $("#search_btn").on("keyup", function(){
+                if($(this).val() == '') {
+                    $("#result_user").html("");
+                }
+                else{
+                    search_text = $(this).val();
+                    $.ajax({
+                        type: "POST",
+                        url: "result_search.php",
+                        data: {
+                            'search_text': search_text
+                        },
+                        success: function(data) {
+                            var content = $.parseJSON(data);
+                            $("#result_user").html(content);
+                        }
+                    })
+                }
+            })
+        })
+        $(document).ready(function() {
+            $("#an_hien_thongbao").on("click", function() {
+                check = 1;
+                $.ajax({
+                    type: "POST",
+                    url: "load_count_thongbao.php",
+                    data: {
+                        'check': check
+                    }, 
+                    success: function(data) {
+                        return ;
+                    }
+                })
+            })    
+        })
+        function message(event) {
+            $("#tinnhan").show();
+            user_chat = $(event).find("span").eq(0).text();
+            online_status = $(event).find("span").eq(0).next().attr("class");
+            if(online_status.indexOf("text-success") > -1) {
+                $("#online_status").show();
+            }
+            else {
+                $("#online_status").hide();
+            }
+            $.ajax({
+                type: "POST",
+                url: "load_user_chat.php",
+                data: {
+                    'user_chat': user_chat
+                },
+                success: function(data) {
+                    return ;
+                }
+            })
+            setInterval(function() {
+                $("#message").load("load_chat.php").fadeIn();
+            }, 100);
+            $("#message").scrollTop($("#message").prop("scrollHeight"));
+            $("#user_chat").text(user_chat);
+            $("#text_chat").focus();
+        }
+        $("#text_chat").keydown(function(event) {
+                if(event.keyCode == 13 && !event.shiftKey) {
+                    event.preventDefault();
+                    text_chat = $("#text_chat").val();
+                    $.ajax({
+                        type: "POST",
+                        url: "insert_chat.php",
+                        data: {
+                            'text_chat': text_chat
+                        },
+                        success: function(data) {
+                            $("#text_chat").val("");
+                            $("#message").scrollTop($("#message").prop("scrollHeight"));
+                        }
+                    })
+                }
+        })
+        $('body').on('click', function (e) {
+            if ($(e.target).data('toggle') !== 'popover'
+            && $(e.target).parents('.popover.in').length === 0) { 
+                $('[data-toggle="popover"]').popover('hide');
+            }
+        });
+        var check_nav = 1;
+        function show_hideNav(event) {
+            if(check_nav == 1) {
+                $("#left-content").css("left", "-17%");
+                $("#middle-content").css("left", "3%");
+                $("#load_post").css({
+                    "width": "130%",
+                    "marginTop": "20px"
+                });
+                $(event).parent().css("borderColor", "white");
+                check_nav = 0;
+            }
+            else {
+                $("#left-content").css("left", "0");
+                $("#middle-content").css("left", "20%");
+                $("#load_post").css({
+                    "width": "100%",
+                    "marginTop": "0px"
+                });
+                $(event).parent().css("borderColor", "#4CAF50");
+                check_nav = 1;
+            }
+        }
+    </script>
 </html>

@@ -1,0 +1,57 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+#navibar .popover {
+    width: 400px;
+    max-width: none;
+}   
+#left-content {
+    position: fixed;
+    top: 58px;
+    left: 0;
+}
+#right-content {
+    position: fixed;
+    top: 58px;
+    right: 0;
+}
+#middle-content {
+    position: relative;
+    left: 20%;
+}
+#search_icon {
+    background: white !important;
+    border-right: none !important;
+    color: rgb(53, 166, 231) !important;
+}
+#search_btn {
+    outline: 0 !important;
+    border-left: none !important;
+    background: white !important;
+    letter-spacing: 0.5px; 
+    padding-left: 2px !important;
+}
+#search_btn:focus {
+    border-color: rgba(173, 172, 172, 0.6) !important;
+    box-shadow: none !important;
+}
+#tinnhan textarea {
+    outline: 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    resize: none;
+    overflow: hidden;
+}
+#tinnhan textarea::placeholder {
+    color: rgb(173, 172, 172) !important;
+}
+#tinnhan textarea:focus {
+    border-color: rgba(173, 172, 172, 0.6) !important;
+    box-shadow: none !important;
+}
+#close_chat:hover {
+    cursor: pointer;
+    font-weight: 700;
+}
