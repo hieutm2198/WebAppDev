@@ -1,6 +1,6 @@
-# Bài tập lớn Phát triển Ứng dụng Web
+# Bài tập lớn Phát triển ứng dụng Web
 ### Ứng dụng Quản lý và thu thập thông tin cựu sinh viên
-#### Thực hiện bởi Nhóm 6 - Lớp Phát triển ứng dụng Web (HK1 - 2018)
+#### Thực hiện bởi Nhóm 6 - Lớp Phát triển ứng dụng Web (HK1 - 2018) - UET - VNU
 #### Gồm các thành viên:
 * Trần Văn Định (trưởng nhóm)
 * Hoàng Việt Hưng
