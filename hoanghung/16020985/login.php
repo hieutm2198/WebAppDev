@@ -71,7 +71,7 @@
             </form>
         </div>
         <div id="login_footer">
-            <p>&copy; 2018 Website Quản Lý Cựu Sinh Viên | Design By Porn Hub Team</p>
+            <p>&copy; 2018 Website Quản Lý Cựu Sinh Viên | Design By INE Team</p>
         </div>
     </div>
     <div id="subscribe">

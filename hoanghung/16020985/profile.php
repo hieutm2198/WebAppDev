@@ -1,12 +1,6 @@
 <?php
     include('server.php');
-    if(isset($_SESSION['password'])) {
-        $password = $_SESSION['password'];
-
-    }
-    else {
-        $password = '01656830900';
-    }
+    $password = $_SESSION['password'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,50 +31,7 @@
 </head>
 
 <body>
-    <nav id="navibar" class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom border-dark">
-        <a class="navbar-brand" href="#">
-            <img src="image/logo_c9.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-            UET graduate forum
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="#" class="nav-link active ml-4">
-                        <i class="fas fa-home mr-2"></i>
-                        Trang chủ
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link ml-4" data-trigger="focus" data-placement="bottom" data-container="#navibar"
-                        data-html="true" title="">
-                        <i class="fas fa-bell mr-2"></i>
-                        Thông báo
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link ml-4" data-trigger="focus" data-placement="bottom" data-container="#navibar"
-                        data-html="true" title="">
-                        <i class="fas fa-comment-alt mr-2"></i>
-                        Tin nhắn
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link ml-4">
-                        <i class="fas fa-user mr-2"></i>
-                        <?php
-                            if(isset($_SESSION['username'])) {
-                                echo $_SESSION['username'];
-                            }
-                        ?>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <?php include('nav.php'); ?>
     <div class="container-fluid">
         <div style="width: 22%; float: left;">
             <div id="border_profile_list">
@@ -102,17 +53,15 @@
                         ?>
                         </p>
                     </a>
-                    <a href="#introduce" class="list-group-item list-group-item-action active">Quản
+                    <a id="link_introduce" onclick="info_user()" href="#" class="list-group-item list-group-item-action active">Quản
                         lý tài khoản</a>
-                    <a href="#" class="list-group-item list-group-item-action">Bạn
+                    <a id="link_friend" onclick="info_list_friend()" href="#" class="list-group-item list-group-item-action">Bạn
                         bè</a>
+                    <a id="link_post" onclick="info_list_post()" href="#" class="list-group-item list-group-item-action">Danh sách
+                        bài đăng</a>
                     <a href="#" class="list-group-item list-group-item-action">Danh
                         sách khảo sát</a>
-                    <a href="#" class="list-group-item list-group-item-action">Danh sách
-                        bài đăng</a>
-                    <a href="#" class="list-group-item list-group-item-action">Danh sách
-                        forum</a>
-                    <a href="#" class="list-group-item list-group-item-action">Lịch sử</a>
+                    <a id="link_history" href="#" onclick="info_history()" class="list-group-item list-group-item-action">Nhật ký hoạt động</a>
                     <a href="server.php?logout='1'" class="list-group-item list-group-item-action">Đăng xuất</a>
                 </div>
             </div>
@@ -126,12 +75,14 @@
                 Chỉnh sửa
             </button>
             <button id="button_view_account" class="btn btn-outline-primary" onclick="document.getElementById('introduce').style.display='block';
+            document.getElementById('introduce_title').innerHTML = 'QUẢN LÝ TÀI KHOẢN';
             document.getElementById('border_change_psw').style.display='none';
             document.getElementById('button_change_info_user').style.display='block';
             this.style.display='none';">
                 <i class="fas fa-user mr-1" style="font-size: 15px;"></i>
                 Xem tài khoản
             </button>
+            <button id="button_add_post" class="btn btn-outline-primary" onclick="document.getElementById('new_post').style.display='block';"><i class="material-icons mr-1" style="font-size: 20px; position: relative; top: 4px;">add</i>Viết bài</button>
             <div id="introduce" class="container" style="float: left;"><br>
                 <div id="card_info_left">
                     <div class="card">
@@ -589,9 +540,175 @@
                     <button type="submit" name="button_change_psw" class="btn btn-primary" style="padding: 8px 30px; margin: 18px 10px 20px 30%;">Lưu</button>
                 </form>
             </div>
+            <div id="list_friend" style="position: absolute; padding: 20px; display: none;">
+                <table id="info_friend">
+                <?php
+                    $count_friend = 0;
+                    if(isset($_SESSION['idnamhoc'])) {
+                        $idnamhoc = $_SESSION['idnamhoc'];
+                        $msv = $_SESSION['msv'];
+                        $sql_list_friend = "SELECT hoten, anh, gioithieu FROM cuusinhvien WHERE idnamhoc='$idnamhoc' AND idcuusinhvien!='$msv'";
+                        $result = mysqli_query($db, $sql_list_friend);
+                        if(mysqli_num_rows($result) > 0) {
+                            while($row = mysqli_fetch_assoc($result)) {
+                                if($count_friend % 2 == 0) {
+                                    echo "<tr><td style='width: auto; padding-bottom: 20px;'><div class='media border rounded p-3'>
+                                    <img src='image/" .$row['anh']. "' class='rounded mr-2' alt='Image_Friend' width='150px' height='120px'>
+                                    <div class='media-body ml-2'>
+                                    <form method='post'>
+                                    <input type='text' name='name_friend' value='" .$row['hoten']. "' readonly style='border: none; background: transparent; font-weight: 500; color: black; font-size: 16px;'>
+                                    <p><small><i>" .$row['gioithieu']. "</i></small></p>
+                                    <button class='btn btn-outline-primary ml-5' type='submit' name='view_info_friend'>Xem</button></form></div></div></td>";
+                                    $count_friend += 1;
+                                }
+                                else {
+                                    echo "<td style='width: auto; padding-bottom: 20px;'><div class='media border rounded p-3 ml-5'>
+                                    <img src='image/" .$row['anh']. "' class='rounded mr-2' alt='Image_Friend' width='150px' height='120px'>
+                                    <div class='media-body ml-2'>
+                                    <form method='post'>
+                                    <input type='text' name='name_friend' value='" .$row['hoten']. "' readonly style='border: none; background: transparent; font-weight: 500; color: black; font-size: 16px;'>
+                                    <p><small><i>" .$row['gioithieu']. "</i></small></p>
+                                    <button class='btn btn-outline-primary ml-5' type='submit' name='view_info_friend'>Xem</button></form></div></div></td></tr>";
+                                    $count_friend += 1;
+                                }
+                            }
+                        }
+                    }
+                ?>
+                </table>
+            </div>
+            <div id="post_user" style="width: 100%; display: none; padding-bottom: 20px;">
+                <?php
+                if($_SESSION['check_user'] == 0) {
+                    $msv = $_SESSION['msv'];
+                    $hoten = $_SESSION['username'];
+                    $sql_info_post = "SELECT * FROM baidang WHERE idcuusinhvien='$msv'";
+                    $result = mysqli_query($db, $sql_info_post);
+                    if(mysqli_num_rows($result) > 0) {
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $idbaidang = $row['idbaidang'];
+                            $tieude = $row['tieude'];
+                            $hinhanh = $row['hinhanh'];
+                            $yeuthich = $row['yeuthich'];
+                            $thoigian = $row['thoigian'];
+                            $sql_count_cmt = "SELECT count(*) count_cmt FROM binhluan WHERE idbaidang='$idbaidang'";
+                            $result2 = mysqli_query($db, $sql_count_cmt);
+                            $count_cmt = mysqli_fetch_array($result2)['count_cmt'];
+                            $anh_user = $_SESSION['anh'];
+                            echo "<div class='card' style='margin-left: 2%; width: 80%; padding: 20px; margin-top: 20px;'>
+                                    <div class='card-header' style='border-bottom: none; background: transparent; padding: 0;'>
+                                        <div class='media'>
+                                            <img src='image/" .$anh_user. "' alt='Image_User' class='mr-2 rounded-circle' style='width: 50px; height: 50px;'>
+                                            <div class='media-body'>
+                                                <h6>" .$hoten. "</h6>
+                                                <p style='font-size: 12px; color: rgba(173, 172, 172, 0.8);'>"
+                                                .substr($thoigian, 11, 8). " " 
+                                                .substr($thoigian, 8, 2). "/" .substr($thoigian, 5, 2). "/" 
+                                                .substr($thoigian, 0, 4). "</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='card-body' style='padding: 0;'>
+                                    <img class='img-fluid' src='image/" .$hinhanh. "' alt='Image_Post'> 
+                                    <p class='mt-3'><a href='server.php?detail_post=" .$idbaidang. "' style='text-decoration: none; font-size: 22px; font-weight: 500;'>" .$tieude. "</a></p>
+                                    </div>    
+                                    <div class='card-footer' style='border-top: none; background: transparent; padding: 0; position: relative'>
+                                        <span>" .$yeuthich. "</span>
+                                        <i class='fas fa-caret-up fa-2x ml-2' style='color: gray; font-size: 32px; position: relative; top: 5px;'></i>
+                                        <i class='fas fa-caret-down fa-2x ml-1' style='color: gray; font-size: 32px; position: relative; top: 5px;'></i>
+                                        <i class='fas fa-comment fa-lg' style='color: gray; position: absolute; right: 10%; bottom: 5px;'></i>
+                                        <span style='position: absolute; right: 7%; bottom: 0px;'>" .$count_cmt. "</span>
+                                    </div>
+                                  </div>";
+                        }
+                    }
+                }
+                ?>
+            </div>
+            <div id="history_user" style="display: none; position: absolute; padding: 20px;">
+                <?php
+                if($_SESSION['check_user'] == 0) {
+                    $msv = $_SESSION['msv'];
+                    $sql_info_history = "SELECT * FROM lichsu WHERE idcuusinhvien='$msv'";
+                    $result1 = mysqli_query($db, $sql_info_history);
+                    if(mysqli_num_rows($result1) > 0) {
+                        while($row=mysqli_fetch_assoc($result1)) {
+                            $noidung = $row['noidung'];
+                            $time = substr($row['thoigian'], 11, 8). " " 
+                            .substr($row['thoigian'], 8, 2). "/" .substr($row['thoigian'], 5, 2). "/" 
+                            .substr($row['thoigian'], 0, 4);
+                ?>
+                <div class="card mb-4" style="word-spacing: 1px; line-height: 30px">
+                    <div class="card-header p-2 pl-3" style="font-weight: 500">Nội dung</div>
+                    <div class="card-body p-3 pl-3"><?php echo $noidung; ?></div>
+                    <div class="card-footer p-2 pl-3" style="font-weight: 500"><?php echo $time; ?></div>
+                </div>
+                <?php
+                        }
+                    }
+                }
+                ?>
+            </div>
         </div>
     </div>
+    <div id="new_post">
+        <form method="post" action="" enctype="multipart/form-data" id="post_form" style="background-color: rgba(255, 255, 255, 0.911); border-radius: 5px;">
+            <div class="input-group">
+                <input name="title_post" type="text" class="p-2 mb-3 border-0 w-100" placeholder="Tiêu đề bài viết" style="font-size: 22px; font-weight: 500; border-top-left-radius: 5px; border-top-right-radius: 5px">
+            </div>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" name="image_post" style="border-radius: 0;" class="custom-file-input" id="inputGroupFile">
+                    <div class="progress">
+                    <label style="border-radius: 0; font-weight: 500;" class="progress-bar progress-bar-striped progress-bar-animated custom-file-label p-2" for="inputGroupFile" style="width: 10%">Choose Image</label></div>
+                </div>
+            </div>
+            <div class="input-group mt-3">
+                <div class="input-group-prepend">
+                    <span style="border-radius: 0; font-size: 22px; font-weight: 500;" class="input-group-text pl-4 pr-4">Nội dung</span>
+                </div>
+                <textarea name="content_post" style="border-radius: 0;" class="form-control mt-0" rows="18" aria-label="Nội dung"></textarea>
+            </div>
+            <div class="d-flex">
+                <button type="submit" name="button_add_post" style="border-radius: 0;" class="border-0 btn btn-outline-primary ml-auto">Đăng bài</button>
+                <button type="button" style="border-radius: 0;" class="border-0 btn btn-outline-danger pl-3 pr-3"
+                onclick="document.getElementById('new_post').style.display='none'">Hủy</button>
+            </div>
+        </form>
+    </div>
     <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        });
+        $(document).ready(function() {
+            setInterval(function() {
+                $("#load_thongbao").load("load_thongbao.php").fadeIn();
+            }, 500)
+            setInterval(function() {
+                $("#count_thongbao").load("load_count_thongbao.php").fadeIn();
+            }, 500)
+        })
+        $(document).ready(function() {
+            $("#an_hien_thongbao").on("click", function() {
+                check = 1;
+                $.ajax({
+                    type: "POST",
+                    url: "load_count_thongbao.php",
+                    data: {
+                        'check': check
+                    }, 
+                    success: function(data) {
+                        return ;
+                    }
+                })
+            })    
+        })
+        $('body').on('click', function (e) {
+            if ($(e.target).data('toggle') !== 'popover'
+            && $(e.target).parents('.popover.in').length === 0) { 
+                $('[data-toggle="popover"]').popover('hide');
+            }
+        });
         var success = 0;
         function check_old_psw() {
             var old_psw = document.getElementById("old_psw").value;
@@ -663,6 +780,70 @@
             if(cf_new_psw == '') {
                 document.getElementById("check_cf_new_psw_user").style.display = 'none';
             }
+        }
+        function info_user() {
+            document.getElementById("introduce_title").innerHTML = 'QUẢN LÝ TÀI KHOẢN';
+            document.getElementById("introduce").style.display = 'block';
+            document.getElementById("border_edit_info_user").style.display = 'none';
+            document.getElementById("border_change_psw").style.display = 'none';
+            document.getElementById("list_friend").style.display = 'none';
+            document.getElementById('button_view_account').style.display='none';
+            document.getElementById('button_add_post').style.display='none';
+            document.getElementById('button_change_info_user').style.display='block';
+            document.getElementById("post_user").style.display = 'none';
+            document.getElementById("history_user").style.display = 'none';
+            $("#link_friend").removeClass("active");
+            $("#link_post").removeClass("active");
+            $("#link_history").removeClass("active");
+            $("#link_introduce").addClass("active");
+        }
+        function info_list_friend() {
+            document.getElementById("introduce_title").innerHTML = 'DANH SÁCH BẠN BÈ';
+            document.getElementById("introduce").style.display = 'none';
+            document.getElementById("border_edit_info_user").style.display = 'none';
+            document.getElementById("border_change_psw").style.display = 'none';
+            document.getElementById("list_friend").style.display = 'block';
+            document.getElementById('button_view_account').style.display='none';
+            document.getElementById('button_change_info_user').style.display='none';
+            document.getElementById('button_add_post').style.display='none';
+            document.getElementById("post_user").style.display = 'none';
+            document.getElementById("history_user").style.display = 'none';
+            $("#link_introduce").removeClass("active");
+            $("#link_post").removeClass("active");
+            $("#link_history").removeClass("active");
+            $("#link_friend").addClass("active");
+        }
+        function info_list_post() {
+            document.getElementById("introduce_title").innerHTML = 'DANH SÁCH BÀI ĐĂNG';
+            document.getElementById("post_user").style.display = 'block';
+            document.getElementById("introduce").style.display = 'none';
+            document.getElementById("border_edit_info_user").style.display = 'none';
+            document.getElementById("border_change_psw").style.display = 'none';
+            document.getElementById("list_friend").style.display = 'none';
+            document.getElementById('button_view_account').style.display='none';
+            document.getElementById('button_change_info_user').style.display='none';
+            document.getElementById('button_add_post').style.display='block';
+            document.getElementById("history_user").style.display = 'none';
+            $("#link_introduce").removeClass("active");
+            $("#link_friend").removeClass("active");
+            $("#link_history").removeClass("active");
+            $("#link_post").addClass("active");
+        }
+        function info_history() {
+            document.getElementById("introduce_title").innerHTML = 'NHẬT KÝ HOẠT ĐỘNG';
+            document.getElementById("post_user").style.display = 'none';
+            document.getElementById("introduce").style.display = 'none';
+            document.getElementById("border_edit_info_user").style.display = 'none';
+            document.getElementById("border_change_psw").style.display = 'none';
+            document.getElementById("list_friend").style.display = 'none';
+            document.getElementById('button_view_account').style.display='none';
+            document.getElementById('button_change_info_user').style.display='none';
+            document.getElementById('button_add_post').style.display='none';
+            document.getElementById("history_user").style.display = 'block';
+            $("#link_introduce").removeClass("active");
+            $("#link_friend").removeClass("active");
+            $("#link_post").removeClass("active");
+            $("#link_history").addClass("active");
         }
     </script>
 </body>
