@@ -14,4 +14,4 @@
 #### Các thư viện: [Bootstrap](https://getbootstrap.com/), [jQuery](https://jquery.com/), [Popper.js](https://popper.js.org/), [DataTables](https://datatables.net/), [Google Charts](https://developers.google.com/chart/)
 
 
-
+#### [Báo cáo dự án phát triển phần mềm](https://docs.google.com/document/d/1IAdJ0kdA3LfvTiLlBCKMnxD2vmrk3Cq0D2GMKD_CcuI/edit#)
